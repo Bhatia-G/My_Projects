@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication App</title>
+
+    <style>
+        body{
+            background-color: yellow;
+            display: flex;
+            justify-content: center;
+            height: 80vh;
+            align-items: center;
+            text-align: center;
+        }
+        #container{
+            background-color: aquamarine;
+            width: 30vw;
+            letter-spacing: 3px;
+            font-style:italic;
+            border-radius: 10px;
+        }
+        #question{
+            font-size: 30px;
+        }
+        #answer{
+            font-size: 20px;
+        }
+        .btn{
+            font-size: 20px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+
+</head>
+<body>
+        <form id="container">
+            <h4 id="score">Score : 0 </h4>
+            <h2 id="question">What is 8x6 ?</h2>
+            <input type="text" id="answer" placeholder="Enter your answer" autofocus><br><br>
+            <input type="submit" id="click" class="btn" onclick="validate()">
+            <input type="reset" id="clickreset" value="Reset Score" class="btn" onclick="rest()">
+        </form>
+
+        <script>
+            sc =JSON.parse(localStorage.getItem("sc"));
+            que = document.getElementById('question');
+            UserAnswer = document.getElementById('answer');
+            scr = document.getElementById('score');
+            rst = document.getElementById('clickreset');
+            a = Math.floor(Math.random()*15);
+            b = Math.floor(Math.random()*15);
+            correct = a*b;
+            que.innerHTML=`What is ${a}x${b} ?`;
+            scr.innerHTML=`Score : ${sc}`;
+
+            function validate()
+            {
+                if(UserAnswer.value=="")
+                {
+                    alert("Please Enter the answer..");
+                }
+                else
+                {
+               if(Number(UserAnswer.value)==correct)
+               {
+                 sc++;
+                 localstr();
+                }
+                else
+                sc--;
+                if(sc<0)
+                {
+                    sc=0;
+                }
+                localstr();
+                }
+            }
+
+            function localstr()
+            {
+                localStorage.setItem("sc",JSON.stringify(sc));
+            }
+
+            function rest()
+            {
+                sc=0;
+                localstr();
+                scr.innerHTML=`Score : ${sc}`;
+            }
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+    <style>
+        body{
+            background-image: url('GradingsystemBg.jfif');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }   
+
+        #container{
+            /* border: 1px solid black; */
+            margin-top: 40px;
+            height: 470px;
+            width: 900px;
+            margin-left: 100px;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        #input{
+            border: 1px solid black;
+            height: 460px;
+            width: 500px;
+            display: inline-block;
+            margin: 5px;
+        }
+        #output{
+            border: 1px solid black;
+            height: 460px;
+            width: 370px;
+            display: inline-block;
+            margin: 5px;
+            float: right;
+        }
+        #inputHeader{
+            background-color: black;
+            border: 1px solid black;
+            height: 40px;
+            width: 499px;
+            color: white;
+            text-align: center;
+            font-size: 25px;
+        }
+        .OutputHeader{
+            background-color: black;
+            border: 1px solid black;
+            height: 30px;
+            width: 361px;
+            color: white;
+            text-align: center;
+            padding-top: 10px;
+            font-size: 25px;
+            margin-top: 5px;
+        }
+        td{
+            padding-top: 30px;
+            padding-left: 70px;
+            font-size: 20px;
+        }
+        .input{
+            margin-left: 40px;
+            float: right;
+            width: 150px;
+        }
+        
+        .input:hover{
+            border: 2px solid black;
+        }
+        .btn{
+            width: 100px;
+            margin-top: 50px;
+            margin-left: 50px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .btn:hover{
+            border: 3px solid black;
+            box-shadow: 3px 3px 3px 3px rgb(22, 21, 21);
+        }
+        #total{
+            background-color: rgb(241, 117, 117);
+        }
+        #avr{
+            background-color: rgb(107, 107, 228)
+        }
+        #grade{
+            background-color: khaki;
+        }
+        #totalMarks{
+            margin-left: 10px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        #avrMarks{
+            margin-left: 10px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        #gradeMarks{
+            margin-left: 10px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="input">
+            
+            <!-- Grading System.... -->
+ 
+            <div id="inputHeader">
+                Grading System
+            </div>
+            <div id="marks">
+                <table action="">
+                    <tr>
+                        <td>
+                            English : <input type="number" id="Eng" class="input" min="0" max="100" value="30"><br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Mathematics : <input type="number" id="Mat" class="input" min="0" max="100" value="30"><br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Physics : <input type="number" id="Phy" class="input" min="0" max="100" value="30"><br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Computer : <input type="number" id="Com" class="input" min="0" max="100" value="30"><br>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Science : <input type="number" id="Sci" class="input" min="0" max="100" value="30"><br>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick="total()" class="btn" id="total">Total</button>
+                <button onclick="avr()" class="btn" id="avr">Average</button>
+                <button onclick="grade()" class="btn" id="grade">Grade</button>
+            </div>
+        </div>
+
+        <!-- Marks... -->
+
+        <div id="output">
+            <div class="OutputHeader">Total</div>
+            <div id="totalMarks"></div>
+            <div class="OutputHeader">Average</div>
+            <div id="avrMarks"></div>
+            <div class="OutputHeader">Grade</div>
+            <div id="gradeMarks"></div>
+        </div>
+    </div>
+
+    <script>
+        function total()
+        {   
+            english=document.getElementById('Eng').value;
+            maths=document.getElementById('Mat').value;
+            physics=document.getElementById('Phy').value;
+            computer=document.getElementById('Com').value;
+            science=document.getElementById('Sci').value;
+            var total=Number(english)+Number(maths)+Number(physics)+Number(computer)+Number(science);
+
+            marksTotal = document.getElementById('totalMarks');
+
+            marksTotal.innerHTML="";
+            avrMarks.innerHTML="";
+            gradeMarks.innerHTML="";
+
+            marksTotal.innerHTML+= 'Out of 100 : <br><br> ';
+            marksTotal.innerHTML+='English : '+ english + '<br>';
+            marksTotal.innerHTML+='Mathematics : '+ maths + '<br>';
+            marksTotal.innerHTML+='Physics : '+ physics + '<br>';
+            marksTotal.innerHTML+='Computer : '+ computer + '<br>';
+            marksTotal.innerHTML+='Science : '+ science + '<br>';
+            marksTotal.innerHTML+='================================'+'<br>';
+            marksTotal.innerHTML+='Total : ' + total + '<br>';
+            marksTotal.innerHTML+='================================'+'<br>';
+        }
+
+        function avr()
+        {
+            english=document.getElementById('Eng').value;
+            maths=document.getElementById('Mat').value;
+            physics=document.getElementById('Phy').value;
+            computer=document.getElementById('Com').value;
+            science=document.getElementById('Sci').value;
+            var avr=(Number(english)+Number(maths)+Number(physics)+Number(computer)+Number(science))/5;
+
+            marksTotal = document.getElementById('avrMarks');
+
+            marksTotal.innerHTML="";
+            gradeMarks.innerHTML="";
+
+            marksTotal.innerHTML+='================================'+'<br>';
+            marksTotal.innerHTML+='Average : ' + avr + '%' +'<br>';
+            marksTotal.innerHTML+='================================'+'<br>';
+        }
+
+        function grade()
+        {
+            english=document.getElementById('Eng').value;
+            maths=document.getElementById('Mat').value;
+            physics=document.getElementById('Phy').value;
+            computer=document.getElementById('Com').value;
+            science=document.getElementById('Sci').value;
+            var avr=(Number(english)+Number(maths)+Number(physics)+Number(computer)+Number(science))/5;
+
+            if(avr>=90)
+            {
+                grades='A';
+            }
+            else if(avr>=70)
+            {
+                grades='B';
+            }
+            else if(avr>=50)
+            {
+                grades='C';
+            }
+            else
+            {
+                grades='D';
+            }
+            marksTotal = document.getElementById('gradeMarks');
+
+            marksTotal.innerHTML="";
+
+            marksTotal.innerHTML+='================================'+'<br>';
+            marksTotal.innerHTML+='Grade : ' + grades + '<br>';
+            marksTotal.innerHTML+='================================'+'<br>';
+
+        }
+
+    </script>
+
+</body>
+</html> 

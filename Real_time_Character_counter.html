@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+
+    <style>
+        body {
+            background-color: rgb(249, 101, 48);
+            display: flex;
+            justify-content: center;
+
+        }
+
+        #container {
+            border-radius: 8%;
+            margin-top: 15%;
+            height: 45vh;
+            width: 37vw;
+            background-color: rgb(255, 185, 160);
+            border: 1px solid black;
+        }
+
+        h2 {
+            letter-spacing: 2px;
+            font-style: italic;
+            padding-left: 15px;
+        }
+
+        textarea {
+            margin-left: 23px;
+            resize: none;
+            height: 20vh;
+            width: 32vw;
+            font-size: 20px;
+        }
+
+        #result {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-weight: bold;
+            color: blue;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #rem{
+            margin-left: -15px;
+        }
+
+        #char,
+        #rem {
+            color: gray;
+        }
+
+        #tcVAL,
+        #rVAL {
+            margin-left: -75px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <h2>Real-time Character Counter</h2>
+        <textarea id="txt" cols="30" rows="4" placeholder="Enter your text..." maxlength="100" autofocus></textarea>
+        <div id="result">
+            <p id="char">Total Characters : </p>
+            <p id="tcVAL">0</p>
+            <p id="rem">Remaining : </p>
+            <p id="rVAL">0</p>
+        </div>
+    </div>
+
+    <script>
+        max=100;
+        val = document.getElementById('txt');
+        cval = document.getElementById('tcVAL');
+        rval = document.getElementById('rVAL');
+        val.addEventListener("keyup",()=>
+        {
+            countval();
+        })
+
+        function countval()
+        {
+            cval.innerText = val.value.length;
+            rval.innerText = (val.getAttribute("maxlength"))-(val.value.length);
+        }
+    </script>
+
+</body>
+
+</html>

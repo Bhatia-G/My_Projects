@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji's</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            border: 1px solid blueviolet;
+            height: 30px;
+            width: 96.1%;
+            padding: 20px;
+            padding-bottom: 40px;
+            font-size: 30px;
+            background-color: rgb(168, 106, 227);
+        }
+
+        #Unicode {
+            margin-right: 30px;
+        }
+
+        input[type="number"] {
+            height: 40px;
+            width: 150px;
+            font-size: 30px;
+        }
+
+        #search {
+            width: 100px;
+            height: 40px;
+            margin-left: 250px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #search:hover {
+            /* border: 2px solid black; */
+            border: none;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 3px 2px 5px 3px rgb(12, 12, 12);
+        }
+
+        #content {
+            background-color: blueviolet;
+            height: 100%;
+            width: 100%;
+        }   
+        table td{
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: aqua;
+            width: 14%;
+            height: 20px;
+            align-items: center;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 3%;
+        }
+        table td:hover{
+            background-color: blueviolet;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        Unicode Number : <input type="number" value="128512" min="128512" id="Unicode">
+        Rows : <input type="number" value="5" min="1" id="rows">
+        <button onclick="Emoji()" id="search" type="submit">Search</button>
+    </div>
+
+    <div id="content">
+        <table id="tbl">
+
+        </table>
+    </div>
+
+<script>
+
+    function Emoji()
+    {
+
+        val = document.getElementById('Unicode').value;
+        row = document.getElementById('rows').value;
+        table =document.getElementById('tbl');
+        
+        table.innerHTML="";
+        for(i=1;i<=row;i++)
+        {
+            insRow=table.insertRow();
+            
+            for(j=1;j<=10;j++)
+            {
+                cell = insRow.insertCell();
+                cell.innerHTML = '&#'+ val + '<br>'+ val;
+                val++;
+            }
+        }
+    }
+
+//    function drawEmojis()
+//    {
+//        var tbl = document.getElementById("tbl");
+//        var x = document.getElementById('Unicode').value;
+//        //var val = document.getElementById('content');
+//        var n = document.getElementById('rows').value;
+//        tbl.innerHTML='';   
+//        for(var i=1;i<=n;i++)
+//        {
+//            var row = tbl.insertRow();
+//            for(var j=1;j<=10;j++)
+//            {
+//                 var cell = row.insertCell();
+//                 cell.innerHTML="&#"+x+'<br>'+x;
+//                 x++;
+//            }
+//        }
+//    }
+
+
+//    function search() {
+
+//         x = document.getElementById('Unicode').value;
+//         val = document.getElementById('content');
+//         row = document.getElementById('rows').value;
+//         val.innerHTML="";
+//         for (i = 1; i <= row * 10; i++) {
+//             a = '&#' + x;
+//             val.innerHTML += a + '\t';
+//             x++;
+//             if (i % 10 == 0) {
+//                 val.innerHTML += '<br>';
+                
+//             }
+//         }
+//     }
+
+
+    </script>
+</body>
+
+</html>

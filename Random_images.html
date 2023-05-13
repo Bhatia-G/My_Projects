@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: lightcoral;
+        }
+        #container{
+            text-align: center;
+        }
+        img{
+            border-radius: 5px;
+            margin: 10px;
+            box-shadow: 0 3px 8px;
+            background-color: rgb(242, 60, 60);
+        }
+        .btn{
+            border-radius: 10px;
+            font-size: 30px;
+            font-style: italic;
+            letter-spacing: -3px;
+            word-spacing: 5px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 4px;
+            background-color: rgb(159, 251, 220);
+        }
+        .btn:hover{
+            background-color: plum;
+            box-shadow: 0 6px 6px;
+            cursor: pointer;
+        }
+        img:hover{
+            box-shadow: 0 7px 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <img src="https://picsum.photos/300/300?random=1" alt="image" class="panel">
+        <img src="https://picsum.photos/300/300?random=2" alt="image" class="panel">
+        <img src="https://picsum.photos/300/300?random=3" alt="image" class="panel">
+        <img src="https://picsum.photos/300/300?random=4" alt="image" class="panel">
+        <img src="https://picsum.photos/300/300?random=5" alt="image" class="panel">
+        <img src="https://picsum.photos/300/300?random=6" alt="image" class="panel">
+    </div>
+    <button class="btn">Load More</button>
+
+    <script>
+       imgcont = document.querySelector("#container");
+       clickbtn = document.querySelector(".btn");
+
+       clickbtn.addEventListener("click",()=>{
+        addimg();
+       });
+
+
+    //    function addimg()
+    //    {
+    //       newimg = document.createElement("img");
+    //       newimg.src=`https://picsum.photos/300/300?random=${Math.floor(Math.random()*2000)}`;
+    //       imgcont.appendChild(newimg);
+    //    }
+       function addimg()
+       {
+          for(i=0;i<3;i++)
+          {
+            newimg = document.createElement("img");
+            newimg.src=`https://picsum.photos/300/300?random=${Math.floor(Math.random()*2000)}`;
+            imgcont.appendChild(newimg);
+          }
+       }
+    </script>
+
+</body>
+</html>

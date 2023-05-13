@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Img-Slider</title>
+
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(166, 251, 255);
+        }
+        #img-slider{
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            border-radius: 10px;
+            box-shadow: 5px 3px 5px;
+        }
+        .image{
+            border-radius: 10px;
+            box-shadow: 5px 5px 8px;
+        }
+        .image:hover{
+            box-shadow: 7px 7px 9px;
+            cursor: pointer;
+        }
+        .btn{
+            border: none;
+            background-color: white;
+            font-size: 20px;
+            letter-spacing: -4px;
+            height: 30px;
+            position: absolute;
+            top: 100%;
+        }
+        #rightbtn{
+            position: absolute;
+            top: 47%;
+            color: white;
+            font-size: 25px;
+            background: none;
+            opacity: 0.3;
+            right: 28%;
+        }
+        #leftbtn{
+            position: absolute;
+            top: 47%;
+            color: white;
+            font-size: 25px;
+            background: none;
+            opacity: 0.3;
+            left: 28%;
+        }
+        #limg,#rimg{
+            width: 20px;
+            opacity: 0.6;
+        }
+        #limg:hover{
+            width: 25px;
+            cursor: pointer;
+            opacity: 1;
+        }
+        #rimg:hover{
+            width: 25px;
+            cursor: pointer;
+            opacity: 1;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="img-slider">
+        <img src="https://picsum.photos/id/1/500/300" class="image" alt="image">
+        <img src="https://picsum.photos/id/2/500/300" class="image" alt="image">
+        <img src="https://picsum.photos/id/3/500/300" class="image" alt="image">
+        <img src="https://picsum.photos/id/4/500/300" class="image" alt="image">
+        <img src="https://picsum.photos/id/5/500/300" class="image" alt="image">
+        <button class="btn" id="leftbtn" > <img id="limg" onclick="prev()" src="data:image/png;base64,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" alt=""> </button>
+        <button class="btn" id="rightbtn" > <img id="rimg" onclick="next()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwFh2PvhKKTRGCThudXqp0NWfG9-dnQ54Ezw&usqp=CAU" alt=""> </button>
+    </div>
+
+    <script>
+        a=0;
+        // imgel = document.querySelector('.image');
+        
+        imgel = document.getElementsByClassName("image");
+        function prev()
+        {a--;
+                for(i=0;i<imgel.length;i++)
+                {
+                    imgel[i].style.transform="translateX(-"+a*5+"00px)";
+                }
+        }
+        
+        function next()
+        {
+            if(a<4)
+            {
+                a++;
+            }
+            for(i=0;i<imgel.length;i++)
+            {
+                imgel[i].style.transform="translateX(-"+a*5+"00px)";
+            }
+        }
+    </script>
+
+</body>
+</html>

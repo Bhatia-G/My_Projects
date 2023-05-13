@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feet to Inches</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 80vw;
+            background-color: orange;
+            margin: auto;
+        }
+
+        #heading {
+            padding-top: 40px;
+            padding-left: 80px;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        #calculate {
+            background-color: mediumorchid;
+            padding-left: 100px;
+            font-size: 2.5em;
+        }
+
+        input[type='number'] {
+            padding: 0.2em;
+            width: 15vw;
+            font-size: large;
+            text-align: center;
+        }
+
+        #equals {
+            padding-left: 150px;
+            width: 10vw;
+        }
+
+        #inch {
+            padding-left: 120px;
+            width: 10px;
+        }
+
+        #inchval {
+            margin-left: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="heading">
+            Feet to Inches Conversion Calculator
+        </div>
+        <div id="calculate">
+            <table>
+                <tr>
+                    <td id="feet">Feet:</td>
+                    <td id="equals">=</td>
+                    <td id="inch">Inch:</td>
+                </tr>
+
+                <tr>
+                    <td><input type="number" name="" id="feetval"></td>
+                    <td></td>
+                    <td><input type="number" name="" id="inchval"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        feet = document.getElementById('feetval');
+        inch = document.getElementById('inchval');
+
+
+        feet.addEventListener('input', function () {
+            inch.value = Number(12 * feet.value).toFixed(2);
+            // ians = inch.toFixed(2);
+            // if (!Number.isInteger(inch.value)) {
+            // }
+            document.getElementById('inchval').innerHTML = inch;
+        })
+
+        inch.addEventListener('input', function () {
+            feet.value = Number(inch.value / 12).toFixed(2);
+            // fans = feet.toFixed(2);
+            // if (!Number.isInteger(feet.value)) {
+            // }
+            document.getElementById('feetval').innerHTML = feet;
+        })
+    </script>
+
+</body>
+
+</html>

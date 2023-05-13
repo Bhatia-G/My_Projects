@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <style>
+        body{
+             background-image: url('Nature2.jfif') ;
+             background-repeat: no-repeat;
+             background-size: cover; /*This will auto-fit the width in background*/
+        }
+        #heading{
+            margin-left: -70px;
+            font-size: 30px;
+            letter-spacing: 8px;
+            color: white;
+        }
+        #clock,h1{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10%;
+        }
+        .time{
+            /* border: 0.5px solid black; */
+            margin-left: 10px;
+            width: 100px;
+        }
+        .num{
+            /* border: 0.2px solid black; */
+            font-size: 50px;
+            color: white;
+            height: 80px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            opacity: 0.8;
+            background-color: rgb(108, 108, 254);
+        }
+        .letter{
+            /* border: 0.5px solid black; */
+            height: 30px;
+            color: white;
+            width: 100px;
+            letter-spacing: 2px;
+            /* margin-top: 22px; */
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            background-color: darkblue;
+        }
+        #ampm{
+            height: 60px;
+            margin-top: 50px;
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            background-color: green;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 id="heading">Digital Clock</h1>
+    <div id="clock">
+
+        <div class="time">
+            <div class="num" id="hour">00</div>
+            <div class="letter">Hours</div>
+        </div>
+
+        <div class="time">
+            <div class="num" id="min">00</div>
+            <div class="letter">Minutes</div>
+        </div>
+
+        <div class="time">
+            <div class="num" id="sec">00</div>
+            <div class="letter">Seconds</div>
+        </div>
+
+        <div class="time" id="ampm">AM</div>
+
+    </div>
+
+    <script>
+        hour = document.getElementById('hour');
+        minute = document.getElementById('min');
+        second = document.getElementById('sec');
+        Ampm = document.getElementById('ampm');
+
+        
+        function clock()
+        {
+            h=new Date().getHours();
+            m=new Date().getMinutes();
+            s=new Date().getSeconds();
+            ampm.innerHTML = "AM";
+
+            if(h>12)
+            {
+                h=h-12;
+                ampm.innerHTML="PM";
+            }
+
+            hour.innerHTML = h;
+            minute.innerHTML = m;
+            second.innerHTML = s;
+            setTimeout(()=>{clock()},1000)
+        }
+        clock();
+
+    </script>
+
+</body>
+</html>

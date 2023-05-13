@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+
+    <style>
+        #main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5em;
+            border: 1px solid black;
+            background-color: orange;
+        }
+
+        #converter {
+            height: 40vh;
+            /* border: 1px solid black; */
+        }
+
+        #heading {
+            font-size: 3em;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: -50px;
+            margin-left: 50px;
+            margin-bottom: 50px;
+            padding: 10px;
+            background-color: rgb(234 255 234);
+            border: 2px solid black;
+        }
+
+        table {
+            margin-left: 40px;
+        }
+
+        #fromName {
+            padding-left: 3vw;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #toName {
+            padding-left: 8vw;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        #from {
+            margin-left: 12px;
+            width: 85%;
+            height: 5vh;
+            text-align: center;
+            font-style: italic;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #symbol {
+            font-size: 2.5em;
+            width: 10vw;
+        }
+
+        #to {
+            margin-left: -155px;
+            width: 12vw;
+            height: 5vh;
+            border-radius: 5px;
+            font-style: italic;
+            text-align: center;
+            border: none;
+        }
+
+        #fromAmt {
+            margin-left: -15px;
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        #toAmt {
+            margin-left: 3em;
+            border: none;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        #display {
+            margin-top: 50px;
+            font-size: larger;
+            font-weight: bold;
+            margin-left: 100px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+
+        <div id="converter">
+            <div id="heading">
+                Currency converter
+            </div>
+
+            <table>
+                <tr>
+                    <td id="fromName">From</td>
+
+                    <td id="toName">To</td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="from" onchange="to2from()">
+                            <option value="" name="">Select Option</option>
+                            <option value="usd" name="from">USD &#36</option>
+                            <option value="inr" name="from">INR &#8377</option>
+                            <option value="cad" name="from">CAD &#36</option>
+                            <option value="yen" name="from">YEN &#165</option>
+                            <option value="euro" name="from">EURO &#8364</option>
+                        </select>
+                    </td>
+
+                    <td id="symbol">
+                        &#8644;
+                        <!-- Symbol -->
+                    </td>
+
+                    <td>
+                        <select id="to" onchange="from2to()">
+                            <option value="" name="">Select Option</option>
+                            <option value="usd" name="to">USD &#36</option>
+                            <option value="inr" name="to">INR &#8377</option>
+                            <option value="cad" name="to">CAD &#36</option>
+                            <option value="yen" name="to">YEN &#165</option>
+                            <option value="euro" name="to">EURO &#8364</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="number" id="fromAmt" placeholder="Enter Amount" oninput="from2to()">
+                    </td>
+
+                    <td>
+                        <input type="number" id="toAmt" placeholder="Enter Amount" oninput="to2from()">
+                    </td>
+                </tr>
+
+            </table>
+
+            <div id="display">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // function calculate()
+        {
+            // fromAmt.value="";  // if user changes currency then amount is deleted..
+            // toAmt.value="";  // if user changes currency then amount is deleted..
+
+        finput = document.getElementById('fromAmt');
+        tinput = document.getElementById('toAmt');
+
+        Currency = ['usd', 'inr', 'cad', 'yen', 'euro'];
+        usd2o = [1, 77.82, 1.26, 132.55, 0.94];  //1Dollar gives 77.82 Rupees...
+        o2usd = [1, 1 / 77.82, 1 / 1.26, 1 / 132.55, 1 / 0.94]; // 1Rupee gives 1/77.82 Dollars...
+
+
+        // finput.addEventListener('input', function () {
+
+            function from2to()
+            {
+            for (i = 0; i < Currency.length; i++) {
+                if (from.value == Currency[i]) {
+
+                    findex = i;
+
+                    break;
+                }
+            }
+            tousd = Number(finput.value * o2usd[findex]);  // To usd..
+
+            for (i = 0; i < Currency.length; i++) {
+                if (to.value == Currency[i]) {
+
+                    tindex = i;
+
+                    break;
+                }
+            }
+            ans = Number(tousd * usd2o[tindex]);
+            tinput.value = ans.toFixed(2);
+
+            document.getElementById('toAmt').innerHTML = tinput;
+        }
+
+        // tinput.addEventListener('input', function () {
+        function to2from()
+        {
+
+            for (i = 0; i < Currency.length; i++) {
+                if (to.value == Currency[i]) {
+
+                    firstindex = i;
+
+                    break;
+                }
+            }
+
+            a1 = Number(toAmt.value * o2usd[firstindex]);  //to usd
+
+            for (i = 0; i < Currency.length; i++) {
+                if (from.value == Currency[i]) {
+                    secondindex = i;
+
+                    break;
+                }
+            }
+
+            finalans = Number(a1 * usd2o[secondindex]).toFixed(2);
+
+            finput.value = finalans;
+
+            document.getElementById('fromAmt').innerHTML = finput;
+        }
+    } 
+    </script>
+
+</body>
+
+</html>

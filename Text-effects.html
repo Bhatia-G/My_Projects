@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-Effects</title>
+
+    <style>
+        body{
+            margin: 0;
+            background-color: rgb(252, 252, 108);
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+        }
+        #container{
+            overflow: hidden;
+            height: 100px;
+            color: black;
+            font-size: 25px;
+            font-family: cursive;
+            width: 500px;
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script>
+        text = "Hello Everyone";
+
+        i=0;
+        len=text.length;
+        type = document.getElementById('container');
+        time();
+
+        function display()
+        {
+            // type.innerHTML+=text[i];
+            // if(i<len)
+            // {
+            //     i++;
+            //     setInterval(()=>{display()},1000);
+            // }
+
+            // setInterval(() => 
+            // {type.innnerHTML+=text[i++];}    
+            // , 1000);
+            if(i<len)
+            {
+                type.innerHTML+=text[i++];
+            }
+
+        }
+        function time()
+        {
+            setInterval(()=>display(),200);
+        }
+
+        // for(i=0;i<len;i++)
+        // {
+        //     setInterval(()=>display(),1000);
+        // }
+
+        // function display()
+        // {
+        //     type.innerHTML+=i;
+        // }
+            
+        
+    </script>
+</body>
+</html>
