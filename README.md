@@ -21,4 +21,9 @@ Live Demo: https://myjsprojects.gauravbj.repl.co/
 
 4. Real-time Character Counter
 Description: A Real-time Character counter application that counts and displays the Total and Remaining characters in a text box .
+
 Live Demo: https://charactercounter.gauravbj.repl.co/
+
+5. Currency Converter
+Description: A Currency Converter application which converts different currencies with onchange values.
+Live Demo: https://currency-convertor.gauravbj.repl.co/
