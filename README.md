@@ -17,3 +17,7 @@ Description: A virtual drum kit web application that allows you to play drum sou
 3. Digital Clock
 Description: A digital clock web application that displays the current time and updates in real-time.
 Live Demo: https://myjsprojects.gauravbj.repl.co/
+
+4. Real-time Character Counter
+Description: A Real-time Character counter application that counts and displays the Total and Remaining characters in a text box .
+Live Demo: https://charactercounter.gauravbj.repl.co/
