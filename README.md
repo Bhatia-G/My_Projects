@@ -9,11 +9,10 @@ Feel free to explore, learn, and contribute!
 
 1. Grading System
 Description: A simple web application that calculates the average grade based on input scores.
-Live Demo: 
+Live Demo: https://gradingsystem.gauravbj.repl.co/
 
 2. Drum Kit Web App
-Description: A virtual drum kit web application that allows you to play drum sounds using keyboard keys or by clicking the drum buttons.
-Live Demo: 
+Description: A virtual drum kit web application that allows you to play drum sounds using keyboard keys or by clicking the drum buttons. 
 
 3. Digital Clock
 Description: A digital clock web application that displays the current time and updates in real-time.
